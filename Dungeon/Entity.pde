@@ -1,14 +1,21 @@
 class Entity
 {
+  String title;//Name of the entity
   PImage img;//Image of the entity
   int row;//The row it is on
   int col;//The column it is on
   
-  Entity(String name,int row,int col)
+  Entity(String title,String location,int row,int col)
   {
+    this.title=title;
     this.row=row;
     this.col=col;
-    img = loadImage(name);
+    img = loadImage(location);
+  }
+  
+  String getTitle()
+  {
+    return title;
   }
   
   void display()
