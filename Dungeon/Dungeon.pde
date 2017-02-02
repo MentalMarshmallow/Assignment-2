@@ -11,7 +11,7 @@ void setup()
   cols=10;//Set Columns
   tiles = new boolean[rows][cols];//Initialised to false
   
-  enemy1= new Entity("Enemy1.png");
+  enemy1= new Entity("Enemy1.png",5,7);
   
   boxWidth=width/10;
   boxHeight=height/10;
