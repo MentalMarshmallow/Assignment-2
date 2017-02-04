@@ -46,21 +46,25 @@ class Room
       {
         tiles[0][rows/2]=1;
         left=true;
+        break;
       }
       if(tiles[cols/2][0]==0)//Middle Upper
       {
         tiles[cols/2][0]=1;
         up=true;
+        break;
       }
       if(tiles[cols-1][rows/2]==0)//Middle Right
       {
         tiles[cols-1][rows/2]=1;
         right=true;
+        break;
       }
       if(tiles[cols/2][rows-1]==0)//Middle bottom
       {
         tiles[cols/2][rows-1]=1;
         down=true;
+        break;
       }
       
     }//End for() 
@@ -81,13 +85,17 @@ class Room
   
   void render()
   {
-    for(float i=0;i<width;i+=boxWidth)
+    background(0,100,0);
+    for(int i=0;i<rows;i++)
     {
-      line(i,0,i,height);
-    }
-    for(float j=0;j<height;j+=boxHeight)
-    {
-      line(0,j,width,j);
+      for(int j=0;j<cols;j++)
+      {
+        if(tiles[i][j]==1||tiles[i][j]==2)
+        {
+          fill(0);
+          rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
+        }
+      }
     }
   }
   

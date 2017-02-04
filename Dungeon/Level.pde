@@ -18,6 +18,14 @@ class Level
     
   }
   
+  void showRoom(int num)
+  {
+    Room temp;
+    temp = rooms.get(num);
+    
+    temp.render();
+  }
+  
   void printRooms()
   {
     for(int i=0;i<rooms.size();i++)

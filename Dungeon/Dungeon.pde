@@ -29,17 +29,9 @@ void setup()
 
 void draw()
 {
-  background(0,100,0);
   stroke(255);
   //Creates the grid for the dungeon room
-  for(float i=0;i<width;i+=boxWidth)
-  {
-    line(i,0,i,height);
-  }
-  for(float j=0;j<height;j+=boxHeight)
-  {
-    line(0,j,width,j);
-  }
+  level.showRoom(0);
   
   /*Draws all of the entities
   for(int i=0;i<entities.size();i++)//Go through the details arraylist
