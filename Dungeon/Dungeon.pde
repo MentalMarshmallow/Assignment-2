@@ -4,6 +4,7 @@ float boxWidth,boxHeight;
 float border;
 int rows,cols;
 boolean tiles[][];//So no tiles can have more than one object on it
+Level level;
 
 void setup()
 {
@@ -21,6 +22,9 @@ void setup()
   */
   
   player = new Player("Player","Player.png",2,7);
+  
+  level =new Level(5);
+  level.printRooms();
 }
 
 void draw()
