@@ -1,4 +1,5 @@
-ArrayList<Entity> entities;
+//ArrayList<Entity> entities;
+Player player;
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
@@ -9,20 +10,22 @@ void setup()
   size(500,500);
   rows=10;//Set Rows
   cols=10;//Set Columns
+  boxWidth=width/10;
+  boxHeight=height/10;
   tiles = new boolean[rows][cols];//Initialised to false
   
-  //ArrayList for all entities in the game
+  /*ArrayList for all entities in the game
   entities= new ArrayList<Entity>();
   entities.add(new Entity("Enemy1","Enemy1.png",5,7) );
   entities.add(new Entity("Player","Player.png",2,7) );
+  */
   
-  boxWidth=width/10;
-  boxHeight=height/10;
-  background(0,100,0);
+  player = new Player("Player","Player.png",2,7);
 }
 
 void draw()
 {
+  background(0,100,0);
   stroke(255);
   //Creates the grid for the dungeon room
   for(float i=0;i<width;i+=boxWidth)
@@ -34,10 +37,13 @@ void draw()
     line(0,j,width,j);
   }
   
-  //Draws all of the entities
+  /*Draws all of the entities
   for(int i=0;i<entities.size();i++)//Go through the details arraylist
   {
     Entity creature = entities.get(i);//retrieve data from the arraylist
     creature.display();
   }
+  */
+  player.render();
+  player.update();
 }
