@@ -4,10 +4,6 @@ abstract class Entity
   PImage img;//Image of the entity
   PVector pos;
   
-  Entity()
-  {
-  }
-  
   abstract void render();
   abstract void update();
 }

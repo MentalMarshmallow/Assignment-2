@@ -1,13 +1,13 @@
 //ArrayList<Entity> entities;
-Player player;
+Player player;//Player entity
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
-boolean tiles[][];
+boolean tiles[][];//So no tiles can have more than one object on it
 
 void setup()
 {
-  size(500,500);
+  size(600,600);
   rows=10;//Set Rows
   cols=10;//Set Columns
   boxWidth=width/10;
