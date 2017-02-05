@@ -48,28 +48,28 @@ class Room
     //Creates an exit on a room. Set the tile to 1.
     for(int i=0;i<numExits;i++)
     {
-      if(tiles[0][rows/2]==0)//Middle Left
-      {
-        tiles[0][rows/2]=1;
-        left=true;
-        break;
-      }
       if(tiles[cols/2][0]==0)//Middle Upper
       {
         tiles[cols/2][0]=1;
         up=true;
         break;
       }
-      if(tiles[cols-1][rows/2]==0)//Middle Right
-      {
-        tiles[cols-1][rows/2]=1;
-        right=true;
-        break;
-      }
       if(tiles[cols/2][rows-1]==0)//Middle bottom
       {
         tiles[cols/2][rows-1]=1;
         down=true;
+        break;
+      }
+      if(tiles[0][rows/2]==0)//Middle Left
+      {
+        tiles[0][rows/2]=1;
+        left=true;
+        break;
+      }
+      if(tiles[cols-1][rows/2]==0)//Middle Right
+      {
+        tiles[cols-1][rows/2]=1;
+        right=true;
         break;
       }
       
