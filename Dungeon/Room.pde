@@ -5,6 +5,7 @@ It contains the size, the type and the number of exits.
 class Room
 {
   int tiles[][];//a 2-D array that stores what is on each tile
+  boolean empty[][];//Check if tile is empty
   int numExits;//The number of exits in the room
   char entrance;
   boolean up,left,right,down;//Set to say if any exits are unused
@@ -12,6 +13,7 @@ class Room
   Room(int rows,int cols,int numExits,char entrance)
   {
     tiles = new int[rows][cols];
+    empty = new boolean[rows][cols];
     this.numExits=numExits;
     
     this.entrance=entrance;
@@ -69,8 +71,11 @@ class Room
       
     }//End for() 
     
+    setEmpty();
+    
   }
   
+  //Shows the values for the tiles of the room
   void getMatrix()
   {
     for(int i=0;i<rows;i++)
@@ -83,6 +88,7 @@ class Room
     }
   }
   
+  //Displays the room on the screen
   void render()
   {
     background(0,100,0);
@@ -99,7 +105,28 @@ class Room
     }
   }
   
-  //Gets the exit for the next room
+  /*Checks if the tiles of the room are unused so an entity 
+  can walk on the tile
+  */
+  void setEmpty()
+  {
+    for(int i=0;i<rows;i++)
+    {
+      for(int j=0;j<cols;j++)
+      {
+        if(tiles[i][j]==0)
+        {
+          empty[i][j]=true;
+        }
+      }
+    }
+  }
+  
+  
+  /*Gets the exit for the next room
+  Sets the room to the opposite of the exit used. 
+  This sets the exit of the room to the entrance of the next room
+  */
   char getExit()
   {
     //Check if there are any unused exits

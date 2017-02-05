@@ -3,8 +3,9 @@ Player player;//Player entity
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
-boolean tiles[][];//So no tiles can have more than one object on it
 Level level;
+int totalRooms;
+int currentRoom;
 
 void setup()
 {
@@ -13,7 +14,6 @@ void setup()
   cols=10;//Set Columns
   boxWidth=width/10;
   boxHeight=height/10;
-  tiles = new boolean[rows][cols];//Initialised to false
   
   /*ArrayList for all entities in the game
   entities= new ArrayList<Entity>();
@@ -23,16 +23,17 @@ void setup()
   
   player = new Player("Player","Player.png",2,7);
   
-  level =new Level(5);
+  totalRooms=5;
+  level =new Level(totalRooms);
   level.printRooms();
+  currentRoom=0;
 }
 
 void draw()
 {
   stroke(255);
   //Creates the grid for the dungeon room
-  level.showRoom(0);
-  
+  drawRoom();
   /*Draws all of the entities
   for(int i=0;i<entities.size();i++)//Go through the details arraylist
   {
@@ -40,6 +41,4 @@ void draw()
     creature.display();
   }
   */
-  player.render();
-  player.update();
 }

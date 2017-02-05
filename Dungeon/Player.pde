@@ -1,46 +1,57 @@
+/*
+The player moves using the rows and cols and is an entity.
+*/
 class Player extends Entity
-{
+{  
   Player(String title,String location,int row,int col)
   {
-    pos = new PVector(row*boxWidth,col*boxHeight);
+    this.row=row;
+    this.col=col;
     img = loadImage(location);
     this.title=title;
   }
   
   void render()
   {
-    image(img,pos.x,pos.y);
+    image(img,row*boxWidth,col*boxHeight);
   }
   
   void update()
   {
+    Room current;//The current Room the player is in
+    current = level.rooms.get(currentRoom);
+    
     if(keyPressed)
     {
       switch (keyCode)
       {
         case UP:
-         if(pos.y>0)
-         pos.y-=boxHeight;
+         if (col>0 && current.empty[row][col])
+         col--;
          break;
          
         case DOWN:
-         if( (pos.y+boxHeight) < height)
-         pos.y+=boxHeight;
+         if (col <rows-1 && current.empty[row][col])
+         col++;
          break;
         
         case LEFT:
-         if(pos.x > 0)
-         pos.x-=boxWidth;
+         if (row> 0 && current.empty[row][col])
+         row--;
          break;
          
         case RIGHT:
-         if( (pos.x+boxWidth) < width)
-         pos.x+=boxWidth;
+         if (row < cols-1 && current.empty[row][col])
+         row++;
          break;
          
         default:
         break;
       }
+    }
+    if(!current.empty[row][col])
+    {
+      currentRoom++;
     }
   }
 }
