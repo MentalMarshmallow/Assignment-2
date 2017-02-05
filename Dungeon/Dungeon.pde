@@ -1,4 +1,5 @@
 //ArrayList<Entity> entities;
+ArrayList<Integer> directions = new ArrayList<Integer>();//ArrayList to get get directions of the map
 Player player;//Player entity
 float boxWidth,boxHeight;
 float border;
@@ -10,10 +11,10 @@ int currentRoom;
 void setup()
 {
   size(600,600);
-  rows=10;//Set Rows
-  cols=10;//Set Columns
-  boxWidth=width/10;
-  boxHeight=height/10;
+  rows=11;//Set Rows
+  cols=11;//Set Columns
+  boxWidth=width/cols;
+  boxHeight=height/rows;
   
   /*ArrayList for all entities in the game
   entities= new ArrayList<Entity>();
@@ -21,18 +22,20 @@ void setup()
   entities.add(new Entity("Player","Player.png",2,7) );
   */
   
-  player = new Player("Player","Player.png");
+  player = new Player("Player","Player.png",rows/2,cols/2);
   
+  stroke(255);
   totalRooms=5;
   level =new Level(totalRooms);
-  level.printRooms();
+  //level.printRooms();
   currentRoom=0;
+  Map(' ');
   nextRoom();
+  player.render();
 }
 
 void draw()
 {
-  stroke(255);
   //Creates the grid for the dungeon room
   drawRoom();
   /*Draws all of the entities

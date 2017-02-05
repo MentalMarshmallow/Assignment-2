@@ -9,7 +9,7 @@ class Level
     totalRows=totalCols=0;//set the rows and cols to 0
     
     rooms = new ArrayList<Room>();
-    rooms.add(new Room(rows,cols,3,'n') );//Starting room has no entrance
+    rooms.add(new Room(rows,cols,1,'n',0) );//Starting room has no entrance
     
     totalRows+=rows;
     totalCols+=cols;
@@ -20,7 +20,7 @@ class Level
       Room temp;
       temp = rooms.get(rooms.size()-1);//Used to get the exit of the previous room
       
-      rooms.add(new Room(rows,cols,1,temp.getExit()) );//Adds a new room
+      rooms.add(new Room(rows,cols,1,temp.getExit(),rooms.size()-1) );//Adds a new room
       totalRows+=rows;
       totalCols+=cols;
     }
@@ -28,7 +28,7 @@ class Level
     Room temp;
     temp = rooms.get(rooms.size()-1);//Used to get the exit of the previous room
     
-    rooms.add(new Room(rows,cols,0,temp.getExit()) );//Adds the final room
+    rooms.add(new Room(rows,cols,0,temp.getExit(),rooms.size()-1) );//Adds the final room
     totalRows+=rows;
     totalCols+=cols;
   }
@@ -40,12 +40,13 @@ class Level
     
     temp.render();
   }
-  
+  /*
   void showLevel()
   {
     //size of level is 2x^2. Each room is x/rooms
     background(0);
     fill(0,100,0);
+    int border=width/10;
     
     for(int i=0;i<rooms.size();i++)
     {
@@ -55,7 +56,7 @@ class Level
       
       
     }
-  }
+  }*/
   
   void printRooms()
   {

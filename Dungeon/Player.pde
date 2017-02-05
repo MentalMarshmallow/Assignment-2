@@ -3,8 +3,10 @@ The player moves using the rows and cols and is an entity.
 */
 class Player extends Entity
 {  
-  Player(String title,String location)
+  Player(String title,String location,int col,int row)
   {
+    this.row=row;
+    this.col=col;
     img = loadImage(location);
     this.title=title;
   }
@@ -19,34 +21,33 @@ class Player extends Entity
     Room current;//The current Room the player is in
     current = level.rooms.get(currentRoom);
     
-    if(keyPressed)
+    //Checks if the arrow keys are pressed
+    switch (keyCode)
     {
-      switch (keyCode)
-      {
-        case UP:
-         if (col>0 && current.empty[row][col])
-         col--;
-         break;
-         
-        case DOWN:
-         if (col <cols-1 && current.empty[row][col])
-         col++;
-         break;
-        
-        case LEFT:
-         if (row> 0 && current.empty[row][col])
-         row--;
-         break;
-         
-        case RIGHT:
-         if (row < rows-1 && current.empty[row][col])
-         row++;
-         break;
-         
-        default:
-        break;
-      }
+      case UP:
+       if (col>0 && current.empty[row][col-1])
+       col--;
+       break;
+       
+      case DOWN:
+       if (col <cols-1 && current.empty[row][col+1])
+       col++;
+       break;
+      
+      case LEFT:
+       if (row> 0 && current.empty[row-1][col])
+       row--;
+       break;
+       
+      case RIGHT:
+       if (row < rows-1 && current.empty[row+1][col])
+       row++;
+       break;
+       
+      default:
+      break;
     }
+    //println(keyCode);
     
     if(current.tiles[row][col]==1)//The player is in the exit so currentRoom goes forward
     {

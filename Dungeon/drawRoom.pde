@@ -1,9 +1,12 @@
 void drawRoom()
 {
-  level.showRoom();
-  
-  player.render();
-  
-  delay(100);
-  player.update();
+  if(keyPressed)
+  {
+    level.showRoom();
+    player.update();
+    player.render();
+    displayMap();
+    
+    delay(100);
+  }
 }
