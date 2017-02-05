@@ -4,6 +4,8 @@ It contains the size, the type and the number of exits.
 */
 class Room
 {
+  int rows;//Total rows in the room
+  int cols;//Total columns in the room
   int tiles[][];//a 2-D array that stores what is on each tile
   boolean empty[][];//Check if tile is empty
   int numExits;//The number of exits in the room
@@ -12,6 +14,8 @@ class Room
   
   Room(int rows,int cols,int numExits,char entrance)
   {
+    this.rows=rows;
+    this.cols=cols;
     tiles = new int[rows][cols];
     empty = new boolean[rows][cols];
     this.numExits=numExits;

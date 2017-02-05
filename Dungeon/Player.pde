@@ -3,10 +3,8 @@ The player moves using the rows and cols and is an entity.
 */
 class Player extends Entity
 {  
-  Player(String title,String location,int row,int col)
+  Player(String title,String location)
   {
-    this.row=row;
-    this.col=col;
     img = loadImage(location);
     this.title=title;
   }
@@ -31,7 +29,7 @@ class Player extends Entity
          break;
          
         case DOWN:
-         if (col <rows-1 && current.empty[row][col])
+         if (col <cols-1 && current.empty[row][col])
          col++;
          break;
         
@@ -41,7 +39,7 @@ class Player extends Entity
          break;
          
         case RIGHT:
-         if (row < cols-1 && current.empty[row][col])
+         if (row < rows-1 && current.empty[row][col])
          row++;
          break;
          
@@ -49,9 +47,16 @@ class Player extends Entity
         break;
       }
     }
-    if(!current.empty[row][col])
+    
+    if(current.tiles[row][col]==1)//The player is in the exit so currentRoom goes forward
     {
       currentRoom++;
+      nextRoom();
+    }
+    else if(current.tiles[row][col]==2)//The player is the entrance so currentRoom goes backwards
+    {
+      currentRoom--;
+      nextRoom();
     }
   }
 }

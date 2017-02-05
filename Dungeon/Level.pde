@@ -15,7 +15,7 @@ class Level
     totalCols+=cols;
     
     //Creates an arraylist the size of numRooms 
-    while(numRooms>rooms.size())
+    while(numRooms-1>rooms.size())
     {
       Room temp;
       temp = rooms.get(rooms.size()-1);//Used to get the exit of the previous room
@@ -25,6 +25,12 @@ class Level
       totalCols+=cols;
     }
     
+    Room temp;
+    temp = rooms.get(rooms.size()-1);//Used to get the exit of the previous room
+    
+    rooms.add(new Room(rows,cols,0,temp.getExit()) );//Adds the final room
+    totalRows+=rows;
+    totalCols+=cols;
   }
   
   void showRoom()

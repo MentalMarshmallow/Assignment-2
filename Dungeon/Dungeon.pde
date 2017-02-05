@@ -21,12 +21,13 @@ void setup()
   entities.add(new Entity("Player","Player.png",2,7) );
   */
   
-  player = new Player("Player","Player.png",2,7);
+  player = new Player("Player","Player.png");
   
   totalRooms=5;
   level =new Level(totalRooms);
   level.printRooms();
   currentRoom=0;
+  nextRoom();
 }
 
 void draw()
