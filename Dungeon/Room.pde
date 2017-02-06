@@ -116,21 +116,15 @@ class Room
   //Shows the values for the tiles of the room
   void getMatrix()
   {
-    /*
     for(int i=0;i<rows;i++)
     {
       for(int j=0;j<cols;j++)
       {
-        println(tiles[i][j]);
+        //println(tiles[i][j]);
+        println(empty[i][j]);
       }
       println("*******");
     }
-    */
-    for(int k=0;k<connected.length;k++)
-    {
-      println(connected[k]);
-    }
-      println("*******");
   }
   
   //Displays the room on the screen

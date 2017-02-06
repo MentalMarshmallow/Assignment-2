@@ -52,4 +52,32 @@ void nextRoom()
     player.row=1;
     player.col=currentCols/2;
   }
+  
+  //Send enemies to the entrances
+  for(int i=0;i<enemies.size();i++)
+  {
+    AI enemy=enemies.get(i);
+    
+    if(enemy.row==currentRows/2 && enemy.col==0)//If enemy uses upper exit
+    {
+      enemy.row=currentRows/2;
+      enemy.col=currentCols-2;
+    }
+    if(enemy.row==currentRows/2 && enemy.col==currentCols-1)//If enemy uses bottom exit
+    { 
+      enemy.row=currentRows/2;
+      enemy.col=1;
+    }
+    if(enemy.row==0 && enemy.col==currentCols/2)//If enemy uses left exit
+    {
+      enemy.row=currentRows-2;
+      enemy.col=currentCols/2;
+    }
+    if(enemy.row==currentRows-1 && enemy.col==currentCols/2)//If enemy uses right exit
+    {
+      enemy.row=1;
+      enemy.col=currentCols/2;
+    }
+  }
+  
 }

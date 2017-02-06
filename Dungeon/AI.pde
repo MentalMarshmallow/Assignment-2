@@ -21,8 +21,18 @@ class AI extends Entity
   //Has all of the algorithms for the ai movement.
   void update()
   {
+    println(row,col,"\n new\n");
     Room AI;//The current Room the AI is in
     AI= level.rooms.get(roomNum-1);
+    
+    if(AI.tiles[row][col]==1)//If the AI is on an exit
+    {
+      roomNum++;
+    }
+    else if(AI.tiles[row][col]==2)//If the AI is on an entrance
+    {
+      roomNum--;
+    }
     
     //If the player is not in the room
     if(roomNum!=currentRoom)
@@ -55,24 +65,15 @@ class AI extends Entity
         
       }//end while()
       
-      if(AI.tiles[row][col]==1)//If the AI is on an exit
-      {
-        roomNum++;
-      }
-      else if(AI.tiles[row][col]==2)//If the AI is on an entrance
-      {
-        roomNum--;
-      }
-      
       
     }//end if
     else 
     {
-      if(player.row<row && player.col==col)
+      if(player.row<row && player.col==col && AI.empty[row-1][col])
       {
         row--;
       }
-      else if(player.row<row && player.col<col)
+      else if(player.row<row && player.col<col && AI.empty[row-1][col] && AI.empty[row][col-1])
       {
         int random=(int)random(1,3);
           
@@ -85,7 +86,7 @@ class AI extends Entity
             col--;
           }
       }
-      else if(player.row<row && player.col>col)
+      else if(player.row<row && player.col>col && AI.empty[row-1][col] && AI.empty[row][col+1])
       {
         int random=(int)random(1,3);
           
@@ -98,19 +99,19 @@ class AI extends Entity
             col++;
           }
       } 
-      else if(player.row==row && player.col<col)
+      else if(player.row==row && player.col<col && AI.empty[row][col-1])
       {
         col--;
       }
-      else if(player.row==row && player.col>col)
+      else if(player.row==row && player.col>col && AI.empty[row][col+1])
       {
         col++;
       }
-      else if(player.row>row && player.col==col)
+      else if(player.row>row && player.col==col && AI.empty[row+1][col])
       {
         row++;
       }
-      else if(player.row>row && player.col<col)
+      else if(player.row>row && player.col<col && AI.empty[row+1][col] && AI.empty[row][col+1])
       {
         int random=(int)random(1,3);
           
@@ -123,7 +124,7 @@ class AI extends Entity
             col++;
           }
       }
-      else if(player.row>row && player.col>col)
+      else if(player.row>row && player.col>col && AI.empty[row+1][col] && AI.empty[row][col-1])
       {
         int random=(int)random(1,3);
           
@@ -137,33 +138,6 @@ class AI extends Entity
           }
       }
       
-      
-      /*
-      if(col!=player.col && row!=player.row)
-      {
-        if(player.col-col>player.row-row)
-        {
-          col--;
-        }
-        else if(player.col-col<player.row-row)
-        {
-          row--;
-        }
-        else 
-        {
-          int random=(int)random(1,3);
-          
-          if(random==1)
-          {
-            row--;
-          }
-          else
-          {
-            col--;
-          }
-        }
-      }
-      */
     }
     
   }//end update()
