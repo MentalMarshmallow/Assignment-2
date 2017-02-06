@@ -109,9 +109,9 @@ class Room
           }
         }
       }
-    }
+    }//End for ()
     
-  }
+  }//End constructor
   
   //Shows the values for the tiles of the room
   void getMatrix()

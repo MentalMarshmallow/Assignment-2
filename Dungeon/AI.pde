@@ -24,9 +24,10 @@ class AI extends Entity
     Room AI;//The current Room the AI is in
     AI= level.rooms.get(roomNum-1);
     
-    //While loop is to make sure the ai moves in a direction
+    //If the player is not in the room
     if(roomNum!=currentRoom)
     {
+      //While loop is to make sure the ai moves in a direction
       while (true)
       {
         int random=(int)random(1,5);//Gets the direction the AI will move
@@ -67,7 +68,102 @@ class AI extends Entity
     }//end if
     else 
     {
+      if(player.row<row && player.col==col)
+      {
+        row--;
+      }
+      else if(player.row<row && player.col<col)
+      {
+        int random=(int)random(1,3);
+          
+          if(random==1)
+          {
+            row--;
+          }
+          else
+          {
+            col--;
+          }
+      }
+      else if(player.row<row && player.col>col)
+      {
+        int random=(int)random(1,3);
+          
+          if(random==1)
+          {
+            row--;
+          }
+          else
+          {
+            col++;
+          }
+      } 
+      else if(player.row==row && player.col<col)
+      {
+        col--;
+      }
+      else if(player.row==row && player.col>col)
+      {
+        col++;
+      }
+      else if(player.row>row && player.col==col)
+      {
+        row++;
+      }
+      else if(player.row>row && player.col<col)
+      {
+        int random=(int)random(1,3);
+          
+          if(random==1)
+          {
+            row++;
+          }
+          else
+          {
+            col++;
+          }
+      }
+      else if(player.row>row && player.col>col)
+      {
+        int random=(int)random(1,3);
+          
+          if(random==1)
+          {
+            row++;
+          }
+          else
+          {
+            col--;
+          }
+      }
       
+      
+      /*
+      if(col!=player.col && row!=player.row)
+      {
+        if(player.col-col>player.row-row)
+        {
+          col--;
+        }
+        else if(player.col-col<player.row-row)
+        {
+          row--;
+        }
+        else 
+        {
+          int random=(int)random(1,3);
+          
+          if(random==1)
+          {
+            row--;
+          }
+          else
+          {
+            col--;
+          }
+        }
+      }
+      */
     }
     
   }//end update()
