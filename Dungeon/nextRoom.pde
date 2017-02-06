@@ -12,7 +12,6 @@ void nextRoom()
   {
     if(!current.entered)
     {
-      println(player.row,player.col);
       current.entered=true;
       map.update('u');
     }
@@ -24,7 +23,6 @@ void nextRoom()
   { 
     if(!current.entered)
     {
-      println(player.row,player.col);
       current.entered=true;
       map.update('d');
     }
@@ -48,7 +46,6 @@ void nextRoom()
   {
     if(!current.entered)
     {
-      println(player.row,player.col);
       current.entered=true;
       map.update('r');
     }

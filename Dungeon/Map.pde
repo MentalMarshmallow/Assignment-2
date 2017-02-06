@@ -10,7 +10,7 @@ class Map//(char direction)
   
   Map()
   {
-    pos = new PVector(width/2,height/2);
+    pos = new PVector(width-width/10,height/10);
     size=width/100;
   }
   
@@ -37,7 +37,7 @@ class Map//(char direction)
       case 'r':
        directions.add(new Integer(4));
        break;
-    }//end switch()
+    }//end switch(
   }
   
   void render()
@@ -80,8 +80,8 @@ class Map//(char direction)
       }
     
     }//end for()
-    pos.x=width/2;
-    pos.y=width/2;
+    pos.x=width-width/10;
+    pos.y=height/10;
   }
     
 }

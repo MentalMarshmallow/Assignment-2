@@ -47,7 +47,6 @@ class Player extends Entity
       default:
       break;
     }
-    //println(keyCode);
     
     if(current.tiles[row][col]==1)//The player is in the exit so currentRoom goes forward
     {

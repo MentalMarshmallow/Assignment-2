@@ -72,6 +72,7 @@ class Level
          break;
       }//end switch()
       
+      rooms.get(roomNumber).setNextLevel();
   }
   
   void previousRoom()

@@ -1,4 +1,4 @@
-//ArrayList<Entity> entities;
+//ArrayList<AI> enemies;
 Player player;//Player entity
 float boxWidth,boxHeight;
 float border;
@@ -17,9 +17,9 @@ void setup()
   boxHeight=height/rows;
   
   /*ArrayList for all entities in the game
-  entities= new ArrayList<Entity>();
-  entities.add(new Entity("Enemy1","Enemy1.png",5,7) );
-  entities.add(new Entity("Player","Player.png",2,7) );
+  enemies= new ArrayList<AI>();
+  enemies.add(new AI("Enemy1","Enemy1.png",5,7) );
+  enemies.add(new AI("Enemy2","Enemy2.png",2,7,4) );
   */
   
   player = new Player("Player","Player.png",rows/2,cols/2);

@@ -6,6 +6,7 @@ It sets the rooms tiles to be different depending on what is in the room:
 1 is set for exits.
 2 is set for entrances.
 3 is set for walls.
+4 is set for the entrance to the next level.
 */
 class Room
 {
@@ -145,7 +146,17 @@ class Room
           
           fill(0);
           rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
-          
+
+        }
+        else if(tiles[i][j]==3)
+        {
+          fill(255,0,255);
+          rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
+        }
+        else if(tiles[i][j]==4)
+        {
+          fill(0,0,255);
+          rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
         }
       }
     }
@@ -206,6 +217,14 @@ class Room
     
     return 'n';
     
+  }
+  
+  /*
+  Sets the tile for the next level. Set to 4.
+  */
+  void setNextLevel()
+  {
+    tiles[rows/2][cols/2]=4;
   }
   
 }
