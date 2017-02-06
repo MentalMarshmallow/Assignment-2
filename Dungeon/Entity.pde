@@ -4,6 +4,7 @@ abstract class Entity
   PImage img;//Image of the entity
   int row;
   int col;
+  healthBar health;
   
   abstract void render();
   abstract void update();

@@ -9,6 +9,7 @@ class Player extends Entity
     this.col=col;
     img = loadImage(location);
     this.title=title;
+    health=new healthBar(100);
   }
   
   void render()

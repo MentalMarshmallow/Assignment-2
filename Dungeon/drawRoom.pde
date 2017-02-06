@@ -6,6 +6,7 @@ void drawRoom()
     map.render();
     player.update();
     player.render();
+    playerInfo();
     
     delay(100);
     
