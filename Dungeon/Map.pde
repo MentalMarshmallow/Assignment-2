@@ -10,7 +10,7 @@ class Map//(char direction)
   
   Map()
   {
-    pos = new PVector(width-width/10,height/10);
+    pos = new PVector(width-boxWidth*0.75,boxHeight*0.75);
     size=width/100;
   }
   
@@ -42,7 +42,8 @@ class Map//(char direction)
   
   void render()
   {
-    
+    fill(0);
+    rect(width-boxWidth*1.5,0,boxWidth*1.5,boxHeight*1.5);
     for(int i=0;i<directions.size();i++)//Go through the details arraylist
     {
       int temp = directions.get(i);
@@ -80,8 +81,8 @@ class Map//(char direction)
       }
     
     }//end for()
-    pos.x=width-width/10;
-    pos.y=height/10;
+    pos.x=width-boxWidth*0.75;
+    pos.y=boxHeight*0.75;
   }
     
 }

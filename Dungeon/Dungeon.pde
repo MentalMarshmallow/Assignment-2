@@ -10,7 +10,7 @@ int currentRoom;
 
 void setup()
 {
-  size(600,600);
+  size(595,595);
   rows=11;//Set Rows
   cols=11;//Set Columns
   boxWidth=width/rows;
@@ -20,7 +20,6 @@ void setup()
   enemies= new ArrayList<AI>();
   enemies.add(new AI("Enemy1","Enemy1.png",rows/2,cols/2,1) );
   enemies.add(new AI("Enemy2","Enemy1.png",rows/2,cols/2,4) );
-  
   
   player = new Player("Player","Player.png",rows/2,cols/2);
   

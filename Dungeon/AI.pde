@@ -21,12 +21,12 @@ class AI extends Entity
   //Has all of the algorithms for the ai movement.
   void update()
   {
-    println(row,col,"\n new\n");
     Room AI;//The current Room the AI is in
-    AI= level.rooms.get(roomNum-1);
+    AI= level.rooms.get(roomNum);
     
     if(AI.tiles[row][col]==1)//If the AI is on an exit
     {
+      println(row,col,"\n new\n");
       roomNum++;
     }
     else if(AI.tiles[row][col]==2)//If the AI is on an entrance
@@ -42,6 +42,10 @@ class AI extends Entity
       {
         int random=(int)random(1,5);//Gets the direction the AI will move
         
+        if( row==0 && col==AI.cols/2 || row==AI.rows/2 && col==0 || row==AI.rows-1 && col==AI.cols/2 || row==AI.rows/2 && col==AI.cols-1 )
+        {
+          break;
+        }
         if(random==1 && AI.empty[row][col-1])//AI goes up
         {
           col--;

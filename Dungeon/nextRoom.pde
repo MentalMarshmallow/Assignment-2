@@ -58,25 +58,28 @@ void nextRoom()
   {
     AI enemy=enemies.get(i);
     
-    if(enemy.row==currentRows/2 && enemy.col==0)//If enemy uses upper exit
+    Room AIRoom;//The current Room the AI is in
+    AIRoom= level.rooms.get(enemy.roomNum);
+    
+    if(enemy.row==AIRoom.rows/2 && enemy.col==0)//If enemy uses upper exit
     {
-      enemy.row=currentRows/2;
-      enemy.col=currentCols-2;
+      enemy.row=AIRoom.rows/2;
+      enemy.col=AIRoom.cols-2;
     }
-    if(enemy.row==currentRows/2 && enemy.col==currentCols-1)//If enemy uses bottom exit
+    if(enemy.row==AIRoom.rows/2 && enemy.col==AIRoom.cols-1)//If enemy uses bottom exit
     { 
-      enemy.row=currentRows/2;
+      enemy.row=AIRoom.rows/2;
       enemy.col=1;
     }
-    if(enemy.row==0 && enemy.col==currentCols/2)//If enemy uses left exit
+    if(enemy.row==0 && enemy.col==AIRoom.cols/2)//If enemy uses left exit
     {
-      enemy.row=currentRows-2;
-      enemy.col=currentCols/2;
+      enemy.row=AIRoom.rows-2;
+      enemy.col=AIRoom.cols/2;
     }
-    if(enemy.row==currentRows-1 && enemy.col==currentCols/2)//If enemy uses right exit
+    if(enemy.row==AIRoom.rows-1 && enemy.col==AIRoom.cols/2)//If enemy uses right exit
     {
       enemy.row=1;
-      enemy.col=currentCols/2;
+      enemy.col=AIRoom.cols/2;
     }
   }
   
