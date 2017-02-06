@@ -28,8 +28,14 @@ void setup()
   totalRooms=5;
   level =new Level(totalRooms);
   //level.printRooms();
-  currentRoom=0;
-  Map(' ');
+  currentRoom=0;//Set the first room
+  
+  //Get the current room and set it true for the map
+  Room current;
+  current = level.rooms.get(currentRoom);
+  current.entered=true;
+  Map(' ');//Add the first room to the map
+  
   nextRoom();
   player.render();
 }

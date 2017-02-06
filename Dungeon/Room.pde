@@ -64,25 +64,27 @@ class Room
       //Goes through the if statements until an exit is found
       while(true)
       {
-        if(tiles[rows/2][0]==0)//Middle Upper
+        int random=(int)random(0,4);//Set the room to be on a random side
+        
+        if(tiles[rows/2][0]==0 && random==0)//Middle Upper
         {
           tiles[rows/2][0]=1;
           up=true;
           break;
         }
-        if(tiles[rows/2][cols-1]==0)//Middle bottom
+        if(tiles[rows/2][cols-1]==0 && random==1)//Middle bottom
         {
           tiles[rows/2][cols-1]=1;
           down=true;
           break;
         }
-        if(tiles[0][cols/2]==0)//Middle Left
+        if(tiles[0][cols/2]==0 && random==2)//Middle Left
         {
           tiles[0][cols/2]=1;
           left=true;
           break;
         }
-        if(tiles[rows-1][cols/2]==0)//Middle Right
+        if(tiles[rows-1][cols/2]==0 && random==3)//Middle Right
         {
           tiles[rows-1][cols/2]=1;
           right=true;

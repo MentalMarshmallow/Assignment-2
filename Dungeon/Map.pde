@@ -46,17 +46,17 @@ void displayMap()
     }
     else if(temp==1)
     {
-      pos.y+=(size*-1);
+      pos.y-=size;
       rect(pos.x,pos.y,5,5);
     }
     else if(temp==2)
     {
-      pos.y-=size;
+      pos.y+=size;
       rect(pos.x,pos.y ,5,5);
     }
     else if(temp==3)
     {
-      pos.x+=(size*-1);
+      pos.x-=size;
       rect(pos.x,pos.y,5,5);
     }
     else if(temp==4)
