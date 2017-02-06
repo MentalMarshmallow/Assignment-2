@@ -3,9 +3,9 @@ void drawRoom()
   if(keyPressed)
   {
     level.showRoom();
+    map.render();
     player.update();
     player.render();
-    displayMap();
     
     delay(100);
   }

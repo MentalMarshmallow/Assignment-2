@@ -1,10 +1,10 @@
 //ArrayList<Entity> entities;
-ArrayList<Integer> directions = new ArrayList<Integer>();//ArrayList to get get directions of the map
 Player player;//Player entity
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
 Level level;
+Map map;
 int totalRooms;
 int currentRoom;
 
@@ -27,14 +27,15 @@ void setup()
   stroke(255);
   totalRooms=5;
   level =new Level(totalRooms);
-  level.printRooms();
+  //level.printRooms();
   currentRoom=0;//Set the first room
   
   //Get the current room and set it true for the map
   Room current;
   current = level.rooms.get(currentRoom);
   current.entered=true;
-  Map(' ');//Add the first room to the map
+  map=new Map();
+  map.update(' ');//Add the first room to the map
   
   nextRoom();
   player.render();

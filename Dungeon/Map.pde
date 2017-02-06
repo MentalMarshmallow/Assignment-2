@@ -2,9 +2,21 @@
 Stores the map in an arraylist
 and displays it to the user
 */
-void Map(char direction)
+class Map//(char direction)
 {
-  switch(direction)
+  ArrayList<Integer> directions = new ArrayList<Integer>();//ArrayList to get get directions of the map
+  PVector pos;
+  int size;
+  
+  Map()
+  {
+    pos = new PVector(width/2,height/2);
+    size=width/100;
+  }
+  
+  void update(char direction)
+  {
+    switch(direction)
     {
       case ' '://The starting room
        directions.add(new Integer(0));//Set 0 for the starting room
@@ -26,43 +38,50 @@ void Map(char direction)
        directions.add(new Integer(4));
        break;
     }//end switch()
-    
-}
-
-void displayMap()
-{
-  PVector pos = new PVector(width/2,height/2);
-  int size=width/100;
-  fill(100);
-  
-  for(int i=0;i<directions.size();i++)//Go through the details arraylist
-  {
-    int temp = directions.get(i);
-    
-    if(temp==0)
-    {
-      rect(pos.x,pos.y,5,5);
-    }
-    else if(temp==1)
-    {
-      pos.y-=size;
-      rect(pos.x,pos.y,5,5);
-    }
-    else if(temp==2)
-    {
-      pos.y+=size;
-      rect(pos.x,pos.y ,5,5);
-    }
-    else if(temp==3)
-    {
-      pos.x-=size;
-      rect(pos.x,pos.y,5,5);
-    }
-    else if(temp==4)
-    {
-      pos.x+=size;
-      rect(pos.x,pos.y ,5,5);
-    }
-  
   }
+  
+  void render()
+  {
+    
+    for(int i=0;i<directions.size();i++)//Go through the details arraylist
+    {
+      int temp = directions.get(i);
+      
+      fill(100);
+      
+      if(i==currentRoom)
+      {
+        fill(255,0,0);
+      }
+      
+      if(temp==0)
+      {
+        rect(pos.x,pos.y,5,5);
+      }
+      else if(temp==1)
+      {
+        pos.y-=size;
+        rect(pos.x,pos.y,5,5);
+      }
+      else if(temp==2)
+      {
+        pos.y+=size;
+        rect(pos.x,pos.y ,5,5);
+      }
+      else if(temp==3)
+      {
+        pos.x-=size;
+        rect(pos.x,pos.y,5,5);
+      }
+      else if(temp==4)
+      {
+        pos.x+=size;
+        rect(pos.x,pos.y ,5,5);
+      }
+    
+    }//end for()
+    pos.x=width/2;
+    pos.y=width/2;
+  }
+    
 }

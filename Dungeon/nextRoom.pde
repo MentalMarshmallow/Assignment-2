@@ -14,7 +14,7 @@ void nextRoom()
     {
       println(player.row,player.col);
       current.entered=true;
-      Map('u');
+      map.update('u');
     }
     
     player.row=currentRows/2;
@@ -26,7 +26,7 @@ void nextRoom()
     {
       println(player.row,player.col);
       current.entered=true;
-      Map('d');
+      map.update('d');
     }
     
     player.row=currentRows/2;
@@ -38,7 +38,7 @@ void nextRoom()
     {
       println(player.row,player.col);
       current.entered=true;
-      Map('l');
+      map.update('l');
     }
     
     player.row=currentRows-2;
@@ -50,7 +50,7 @@ void nextRoom()
     {
       println(player.row,player.col);
       current.entered=true;
-      Map('r');
+      map.update('r');
     }
     
     player.row=1;
