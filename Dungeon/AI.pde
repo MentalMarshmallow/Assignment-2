@@ -2,7 +2,7 @@ class AI extends Entity
 {
   int roomNum;
   
-  AI(String title,String location,int roomNum,int row,int col)
+  AI(String title,String location,int row,int col,int roomNum)
   {
     this.roomNum=roomNum;
     this.row=row;
@@ -21,29 +21,55 @@ class AI extends Entity
   //Has all of the algorithms for the ai movement.
   void update()
   {
+    Room AI;//The current Room the AI is in
+    AI= level.rooms.get(roomNum-1);
+    
     //While loop is to make sure the ai moves in a direction
-    while (true)
+    if(roomNum!=currentRoom)
     {
-      int random=(int)random(1,5);//Gets the direction the AI will move
-      Room AI;//The current Room the AI is in
-      AI= level.rooms.get(roomNum);
+      while (true)
+      {
+        int random=(int)random(1,5);//Gets the direction the AI will move
+        
+        if(random==1 && AI.empty[row][col-1])//AI goes up
+        {
+          col--;
+          break;
+        }
+        else if(random==2 && AI.empty[row][col+1])//AI goes down
+        {
+          col++;
+          break;
+        }
+        else if(random==3 && AI.empty[row-1][col])//AI goes left
+        {
+          row--;
+          break;
+        }
+        else if(random==4 && AI.empty[row+1][col])//AI goes right
+        {
+          row++;
+          break;
+        }
+        
+      }//end while()
       
-      if(random==1 && AI.empty[row][col-1])//AI goes up
+      if(AI.tiles[row][col]==1)//If the AI is on an exit
       {
-        
+        roomNum++;
       }
-      else if(random==1 && AI.empty[row][col+1])//AI goes down
+      else if(AI.tiles[row][col]==2)//If the AI is on an entrance
       {
-        
+        roomNum--;
       }
-      else if(random==1 && AI.empty[row-1][col])//AI goes left
-      {
-        
-      }
-      else if(random==1 && AI.empty[row+1][col])//AI goes right
-      {
-        
-      }
+      
+      
+    }//end if
+    else 
+    {
+      
     }
-  }
-}
+    
+  }//end update()
+  
+}//end class AI

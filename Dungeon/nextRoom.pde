@@ -34,7 +34,6 @@ void nextRoom()
   {
     if(!current.entered)
     {
-      println(player.row,player.col);
       current.entered=true;
       map.update('l');
     }
