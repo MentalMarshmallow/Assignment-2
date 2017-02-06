@@ -38,7 +38,6 @@ void displayMap()
   for(int i=0;i<directions.size();i++)//Go through the details arraylist
   {
     int temp = directions.get(i);
-    println(temp);
     
     if(temp==0)
     {
@@ -66,5 +65,4 @@ void displayMap()
     }
   
   }
-  println("*****");
 }
