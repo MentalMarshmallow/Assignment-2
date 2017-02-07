@@ -1,6 +1,6 @@
 ArrayList<AI> enemies;
+ArrayList<Weapon> weapons;
 Player player;//Player entity
-Weapon weapon1;
 Table table;
 float boxWidth,boxHeight;
 float border;
@@ -55,7 +55,8 @@ void initialise()
   {
     for(int i=0;i<3;i++)
     {
-      enemies.add(new AI(i,row.getString("title"),
+      enemies.add(new AI(i,
+                        row.getString("title"),
                         row.getString("location"),
                         rows/2,
                         cols/2,
@@ -64,11 +65,26 @@ void initialise()
                         row.getInt("attack"),
                         row.getInt("defense"),
                         row.getInt("dodgeChance")
-                        ));
+                        ));//AI(int index,String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
     }
   }
   
-  weapon1= new Weapon("Weapon1","Weapon1.png",rows/2,cols/2,3,6,12);
+  weapons = new ArrayList<Weapon>();
+  
+  table = loadTable("Weapon.csv", "header");
+  
+  for (TableRow row : table.rows()) 
+  {
+    weapons.add(new Weapon(0,
+                          row.getString("title"),
+                          row.getString("location"),
+                          rows/2,
+                          cols/2,
+                          totalRooms/2,
+                          row.getInt("minDamage"),
+                          row.getInt("maxDamage")
+                          ));// Weapon(int index, String title,String location,int col,int row,int roomNum,int minDamage, int maxDamage)
+  }
 }
 
 void draw()

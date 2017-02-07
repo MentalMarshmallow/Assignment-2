@@ -29,7 +29,6 @@ class AI extends Entity
     
     if(hit)
     {
-      println("hit");
       currentHealth-=damage;
       if(currentHealth<0)
       {

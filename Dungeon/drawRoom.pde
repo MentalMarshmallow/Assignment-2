@@ -1,6 +1,9 @@
+/*
+Only draws room if the 
+*/
 void drawRoom()
 {
-  if(keyPressed)
+  if(keyPressed)//Only draws if the key is pressed
   {
     if(keyCode==UP||keyCode==DOWN||keyCode==LEFT||keyCode==RIGHT||key==' ' && selected)
     {
@@ -13,14 +16,19 @@ void drawRoom()
       
       delay(100);
       
-      for(int i=0;i<enemies.size();i++)//Go through the details arraylist
+      for(Entity enemy : enemies)//Go through the details arraylist
       {
-        Entity enemy = enemies.get(i);//retrieve data from the arraylist
         enemy.update();
         enemy.render();
       }
       
-      weapon1.render();
+      for(Weapon weapon : weapons)//Go through the details arraylist
+      {
+        weapon.render();
+      }//End for
+      
     }
-  }
+    
+  }//End if
+  
 }

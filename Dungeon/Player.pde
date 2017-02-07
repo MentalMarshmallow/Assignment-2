@@ -85,7 +85,9 @@ class Player extends Entity
     {
       int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
       
-      AI=AI
+      AI enemy= enemies.get(selectedIndex);
+      
+      enemy.hit(damage);
     }
 
 

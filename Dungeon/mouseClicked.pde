@@ -25,6 +25,7 @@ void mouseClicked()
         rect((enemy.row)*boxWidth, (enemy.col)*boxHeight, boxWidth, boxHeight);
         
         selected=true;
+        selectedIndex=i;
       } 
       else if (enemy.row==player.row+1 && enemy.col==player.col)
       {
@@ -32,6 +33,9 @@ void mouseClicked()
         stroke(255, 0, 0);
         strokeWeight(3);
         rect((enemy.row)*boxWidth, (enemy.col)*boxHeight, boxWidth, boxHeight);
+        
+        selected=true;
+        selectedIndex=i;
       } 
       else if (enemy.row==player.row && enemy.col==player.col-1)
       {
@@ -39,6 +43,9 @@ void mouseClicked()
         stroke(255, 0, 0);
         strokeWeight(3);
         rect((enemy.row)*boxWidth, (enemy.col)*boxHeight, boxWidth, boxHeight);
+        
+        selected=true;
+        selectedIndex=i;
       } 
       else if (enemy.row==player.row && enemy.col==player.col+1)
       {
@@ -46,6 +53,9 @@ void mouseClicked()
         stroke(255, 0, 0);
         strokeWeight(3);
         rect((enemy.row)*boxWidth, (enemy.col)*boxHeight, boxWidth, boxHeight);
+        
+        selected=true;
+        selectedIndex=i;
       }
       
     }//end if
