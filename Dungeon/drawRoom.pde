@@ -5,7 +5,7 @@ void drawRoom()
 {
   if(keyPressed)//Only draws if the key is pressed
   {
-    if(keyCode==UP||keyCode==DOWN||keyCode==LEFT||keyCode==RIGHT||key==' ' && selected)
+    if(keyCode==UP||keyCode==DOWN||keyCode==LEFT||keyCode==RIGHT||key==' ' && selected||key==' ' && weaponSelected)
     {
       level.showRoom();
       player.update();

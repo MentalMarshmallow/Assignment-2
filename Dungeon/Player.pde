@@ -81,13 +81,18 @@ class Player extends Entity
       break;
     }
     
-    if(key==' ')
+    if(key==' ' && selected)
     {
       int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
       
       AI enemy= enemies.get(selectedIndex);
       
       enemy.hit(damage);
+      selected=false;
+    }
+    else if(key==' ' && weaponSelected)
+    {
+      weaponSelected=false;
     }
 
 
@@ -95,11 +100,13 @@ class Player extends Entity
     {
       currentRoom++;
       nextRoom();
-    } else if (current.tiles[row][col]==2)//The player is the entrance so currentRoom goes backwards
+    } 
+    else if (current.tiles[row][col]==2)//The player is the entrance so currentRoom goes backwards
     {
       currentRoom--;
       nextRoom();
     }
+    
 
     current.empty[row][col]=false;
   }

@@ -54,9 +54,8 @@ void nextRoom()
   }
   
   //Send enemies to the entrances
-  for(int i=0;i<enemies.size();i++)
+  for(AI enemy: enemies)
   {
-    AI enemy=enemies.get(i);
     
     Room AIRoom;//The current Room the AI is in
     AIRoom= level.rooms.get(enemy.roomNum);

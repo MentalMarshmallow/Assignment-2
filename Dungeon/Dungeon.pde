@@ -1,7 +1,7 @@
 ArrayList<AI> enemies;
 ArrayList<Weapon> weapons;
 Player player;//Player entity
-Table table;
+Table table;//Table to get information
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
@@ -11,7 +11,9 @@ int totalRooms;
 int currentRoom;
 int gameState;
 boolean selected;//If an enemy is selected to be attacked
+boolean weaponSelected;//If a weapon is selected to be picked up
 int selectedIndex;//Index of selected enemy
+int weaponIndex;//Index of selected weapon
 
 void setup()
 {
@@ -23,6 +25,7 @@ void setup()
   
   gameState=2;
   selected=false;
+  weaponSelected=false;
   
   stroke(255);
   totalRooms=5;
@@ -98,11 +101,4 @@ void draw()
   {
     exit();
   }
-  /*Draws all of the entities
-  for(int i=0;i<entities.size();i++)//Go through the details arraylist
-  {
-    Entity creature = entities.get(i);//retrieve data from the arraylist
-    creature.display();
-  }
-  */
 }
