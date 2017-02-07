@@ -12,7 +12,6 @@ class Player extends Entity
     this.dodgeChance=dodgeChance;
     
     this.totalHealth=totalHealth;
-    currentHealth=totalHealth;
     health=new healthBar(totalHealth);
     
     this.row=row;
@@ -30,10 +29,19 @@ class Player extends Entity
     
     if(hit)
     {
-      currentHealth-=damage;
       health.current-=damage;
+      if(health.current<0)
+      {
+        gameState=3;
+      }
       health.render();
     }
+    else
+    {
+      text("*DODGED*",(row-1)*boxWidth,col*boxHeight);
+      delay(20);
+    }
+    
   }
   
   

@@ -8,6 +8,8 @@ Map map;
 int totalRooms;
 int currentRoom;
 
+int gameState;
+
 void setup()
 {
   size(595,595);
@@ -16,12 +18,14 @@ void setup()
   boxWidth=width/rows;
   boxHeight=height/cols;
   
+  gameState=2;
+  
   //ArrayList for all enemy AI in the game
   enemies= new ArrayList<AI>();
   enemies.add(new AI("Enemy1","Enemy1.png",rows/2,cols/2,1,100,1,1,1) );//AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
   enemies.add(new AI("Enemy2","Enemy1.png",rows/2,cols/2,4,100,1,1,1) );
   
-  player = new Player("Player","Player.png",rows/2,cols/2,100,1,1,1);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
+  player = new Player("Player","Player.png",rows/2,cols/2,100,1,1,99);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
   
   stroke(255);
   totalRooms=5;
@@ -43,7 +47,14 @@ void setup()
 void draw()
 {
   //Creates the grid for the dungeon room
-  drawRoom();
+  if(gameState==2)
+  {
+    drawRoom();
+  }
+  else if(gameState==3)
+  {
+    exit();
+  }
   /*Draws all of the entities
   for(int i=0;i<entities.size();i++)//Go through the details arraylist
   {

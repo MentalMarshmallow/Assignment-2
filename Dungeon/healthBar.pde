@@ -33,7 +33,8 @@ class healthBar implements Bar
     //Draw the health
     fill(255,0,0);
     noStroke();
-    rect(boxWidth*0.9,boxHeight/4+2.5,(current/total) * boxWidth*2-5,boxHeight/3-5);
+    rect(boxWidth*0.9,boxHeight/4+2.5,((float)current/total) * boxWidth*2-5,boxHeight/3-5);
+    stroke(255);
     strokeWeight(1);
     
   }
