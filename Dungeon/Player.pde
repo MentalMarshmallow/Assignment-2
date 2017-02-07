@@ -53,16 +53,6 @@ class Player extends Entity
     Room current;//The current Room the player is in
     current = level.rooms.get(currentRoom);
     current.empty[row][col]=true;
-    
-    for(int i=0;i<rows;i++)
-    {
-      for(int j=0;j<cols;j++)
-      {
-        println(current.empty[i][j]);
-      }
-      println("********\n\n");
-    }
-    println("new");
 
     //Checks if the arrow keys are pressed
     switch (keyCode)
@@ -89,6 +79,13 @@ class Player extends Entity
 
     default:
       break;
+    }
+    
+    if(key==' ')
+    {
+      int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
+      
+      AI=AI
     }
 
 

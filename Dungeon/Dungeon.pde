@@ -10,6 +10,8 @@ Map map;
 int totalRooms;
 int currentRoom;
 int gameState;
+boolean selected;//If an enemy is selected to be attacked
+int selectedIndex;//Index of selected enemy
 
 void setup()
 {
@@ -20,6 +22,7 @@ void setup()
   boxHeight=height/cols;
   
   gameState=2;
+  selected=false;
   
   stroke(255);
   totalRooms=5;
@@ -52,13 +55,11 @@ void initialise()
   {
     for(int i=0;i<3;i++)
     {
-      int random;
-      random =(int)random(1,totalRooms+1);
       enemies.add(new AI(i,row.getString("title"),
                         row.getString("location"),
                         rows/2,
                         cols/2,
-                        random,
+                        totalRooms-1-i,
                         row.getInt("totalHealth"),
                         row.getInt("attack"),
                         row.getInt("defense"),
@@ -66,8 +67,6 @@ void initialise()
                         ));
     }
   }
-//enemies.add(new AI(0,"Enemy1","Enemy1.png",rows/2,cols/2,1,100,1,1,1) );//AI(int index,String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
-  //enemies.add(new AI(1,"Enemy2","Enemy1.png",rows/2,cols/2,4,100,1,1,1) );
   
   weapon1= new Weapon("Weapon1","Weapon1.png",rows/2,cols/2,3,6,12);
 }
