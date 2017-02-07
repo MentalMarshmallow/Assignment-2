@@ -8,6 +8,7 @@ abstract class Entity
   int currentHealth;
   int attack;
   int defense;
+  int dodgeChance;
   healthBar health;
   
   abstract void render();

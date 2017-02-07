@@ -2,10 +2,15 @@ class AI extends Entity
 {
   int roomNum;
   
-  AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense)
+  AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
   {
+    this.attack=attack;
+    this.defense=defense;
+    this.dodgeChance=dodgeChance;
+    
     this.totalHealth=totalHealth;
     currentHealth=totalHealth;
+    
     this.roomNum=roomNum;
     this.row=row;
     this.col=col;
