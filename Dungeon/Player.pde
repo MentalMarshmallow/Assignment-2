@@ -3,6 +3,8 @@ The player moves using the rows and cols and is an entity.
 */
 class Player extends Entity
 {  
+  healthBar health;
+  
   Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
   {
     this.attack=attack;
@@ -17,7 +19,23 @@ class Player extends Entity
     this.col=col;
     img = loadImage(location);
     this.title=title;
+    
+    weapon= new Weapon("Fist",3,10);
   }
+  
+  
+  void hit(int damage)
+  {
+    boolean hit =(int)random(1,100)>=dodgeChance;//Checks the probability of hitting based on dodgeChance
+    
+    if(hit)
+    {
+      currentHealth-=damage;
+      health.current-=damage;
+      health.render();
+    }
+  }
+  
   
   void render()
   {

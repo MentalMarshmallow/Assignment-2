@@ -4,7 +4,5 @@ interface Bar
   
   void reduceBar();
   
-  void update();
-  
   void render();
 }

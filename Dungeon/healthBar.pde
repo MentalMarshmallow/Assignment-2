@@ -1,9 +1,9 @@
 class healthBar implements Bar
 {
-  float total;//The total health the healthBar can have
-  float current;
+  int total;//The total health the healthBar can have
+  int current;
   
-  healthBar(float total)
+  healthBar(int total)
   {
     this.total=total;
     current=total;
@@ -15,11 +15,6 @@ class healthBar implements Bar
   }
   
   void reduceBar()
-  {
-    
-  }
-  
-  void update()
   {
     
   }

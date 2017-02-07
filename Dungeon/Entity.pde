@@ -9,7 +9,7 @@ abstract class Entity
   int attack;
   int defense;
   int dodgeChance;
-  healthBar health;
+  Weapon weapon;
   
   abstract void render();
   abstract void update();

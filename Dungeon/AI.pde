@@ -16,6 +16,8 @@ class AI extends Entity
     this.col=col;
     img = loadImage(location);
     this.title=title;
+    
+    weapon= new Weapon("Fist",3,10);
   }
   
   //Displays the AI
@@ -67,10 +69,11 @@ class AI extends Entity
       
     }//end if
     
-    //If the ai is in the room and 1 tile away from the player. This means the ai gets the first hit if the player stumbles into the room
+    //If the ai is in the room and 1 tile away from the player then attack the player. This means the ai gets the first hit if the player stumbles into the room
     else if ( player.row-1==row && player.col==col || player.row+1==row && player.col==col || player.row==row && player.col-1==col || player.row==row && player.col+1==col)
     {
-      
+      int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
+      player.hit(damage);
     }
     
     /*
@@ -117,7 +120,6 @@ class AI extends Entity
     
     if(AI.tiles[row][col]==1)//If the AI is on an exit
     {
-      println(row,col,"\n new\n");
       roomNum++;
       nextRoom();
     }
