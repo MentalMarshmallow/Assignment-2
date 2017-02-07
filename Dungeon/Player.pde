@@ -39,7 +39,6 @@ class Player extends Entity
     else
     {
       text("*DODGED*",(row-1)*boxWidth,col*boxHeight);
-      delay(20);
     }
     
   }
@@ -81,6 +80,21 @@ class Player extends Entity
        
       default:
       break;
+    }
+    
+    if(key==' ')
+    {
+      for(int i=0;i<enemies.size();i++)
+      {
+        AI enemy=enemies.get(i);
+        
+        if(enemy.row-1==row && enemy.col==col || enemy.row+1==row && enemy.col==col || enemy.row==row && enemy.col-1==col || enemy.row==row && enemy.col+1==col)
+        {
+          int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
+          
+          enemy.hit(damage);
+        }
+      }
     }
     
     if(current.tiles[row][col]==1)//The player is in the exit so currentRoom goes forward

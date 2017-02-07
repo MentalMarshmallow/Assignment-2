@@ -1,9 +1,12 @@
 class AI extends Entity
 {
   int roomNum;
+  int index;
   
-  AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
+  AI(int index,String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
   {
+    this.index=index;
+    
     this.attack=attack;
     this.defense=defense;
     this.dodgeChance=dodgeChance;
@@ -18,6 +21,29 @@ class AI extends Entity
     this.title=title;
     
     weapon= new Weapon("Fist",3,10);
+  }
+  
+  void hit(int damage)
+  {
+    boolean hit =(int)random(1,100)>=dodgeChance;//Checks the probability of hitting based on dodgeChance
+    
+    if(hit)
+    {
+      currentHealth-=damage;
+      if(currentHealth<0)
+      {
+        Room AI;//The current Room the AI is in
+        AI= level.rooms.get(roomNum);
+    
+        AI.empty[row][col]=true;
+        removeAI(index);
+      }
+    }
+    else
+    {
+      text("*DODGED*",(row-1)*boxWidth,col*boxHeight);
+    }
+    
   }
   
   //Displays the AI

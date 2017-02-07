@@ -22,8 +22,8 @@ void setup()
   
   //ArrayList for all enemy AI in the game
   enemies= new ArrayList<AI>();
-  enemies.add(new AI("Enemy1","Enemy1.png",rows/2,cols/2,1,100,1,1,1) );//AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
-  enemies.add(new AI("Enemy2","Enemy1.png",rows/2,cols/2,4,100,1,1,1) );
+  enemies.add(new AI(0,"Enemy1","Enemy1.png",rows/2,cols/2,1,100,1,1,1) );//AI(int index,String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
+  enemies.add(new AI(1,"Enemy2","Enemy1.png",rows/2,cols/2,4,100,1,1,1) );
   
   player = new Player("Player","Player.png",rows/2,cols/2,100,1,1,99);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
   
