@@ -3,13 +3,17 @@ The player moves using the rows and cols and is an entity.
 */
 class Player extends Entity
 {  
-  Player(String title,String location,int col,int row)
+  Player(String title,String location,int col,int row,int totalHealth,int attack,int defense)
   {
+    this.attack=attack;
+    this.defense=defense;
+    this.totalHealth=totalHealth;
+    currentHealth=totalHealth;
     this.row=row;
     this.col=col;
     img = loadImage(location);
     this.title=title;
-    health=new healthBar(100);
+    health=new healthBar(totalHealth);
   }
   
   void render()

@@ -2,8 +2,10 @@ class AI extends Entity
 {
   int roomNum;
   
-  AI(String title,String location,int row,int col,int roomNum)
+  AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense)
   {
+    this.totalHealth=totalHealth;
+    currentHealth=totalHealth;
     this.roomNum=roomNum;
     this.row=row;
     this.col=col;
@@ -59,12 +61,18 @@ class AI extends Entity
       
       
     }//end if
+    
+    //If the ai is in the room and 1 tile away from the player. This means the ai gets the first hit if the player stumbles into the room
+    else if ( player.row-1==row && player.col==col || player.row+1==row && player.col==col || player.row==row && player.col-1==col || player.row==row && player.col+1==col)
+    {
+      
+    }
+    
     /*
     If the ai is not in the currentRoom.
     This is the ai's control while in the same room as the player.
     It prioritizes going closer to the player based on its row.
     */
-    
     else
     {
       if(player.row<row && player.col==col && AI.empty[row-1][col])
@@ -73,11 +81,11 @@ class AI extends Entity
       }
       else if(player.row<row && player.col<col && AI.empty[row-1][col])
       {
-            row--;
+        row--;
       }
       else if(player.row<row && player.col>col && AI.empty[row-1][col])
       {
-            row--;
+        row--;
       } 
       else if(player.row==row && player.col<col && AI.empty[row][col-1])
       {
@@ -93,11 +101,11 @@ class AI extends Entity
       }
       else if(player.row>row && player.col<col && AI.empty[row+1][col])
       {
-            row++;
+        row++;
       }
       else if(player.row>row && player.col>col && AI.empty[row+1][col])
       {
-            row++;
+        row++;
       }
       
     }

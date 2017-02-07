@@ -18,10 +18,10 @@ void setup()
   
   //ArrayList for all enemy AI in the game
   enemies= new ArrayList<AI>();
-  enemies.add(new AI("Enemy1","Enemy1.png",rows/2,cols/2,1) );
-  enemies.add(new AI("Enemy2","Enemy1.png",rows/2,cols/2,4) );
+  enemies.add(new AI("Enemy1","Enemy1.png",rows/2,cols/2,1,100,1,1) );//AI(String title,String location,int row,int col,int roomNum,int totalHealth)
+  enemies.add(new AI("Enemy2","Enemy1.png",rows/2,cols/2,4,100,1,1) );
   
-  player = new Player("Player","Player.png",rows/2,cols/2);
+  player = new Player("Player","Player.png",rows/2,cols/2,100,1,1);//Player(String title,String location,int col,int row,int totalHealth)
   
   stroke(255);
   totalRooms=5;

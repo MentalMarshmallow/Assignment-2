@@ -137,18 +137,20 @@ class Room
       {
         if(tiles[i][j]==1||tiles[i][j]==2)
         {
-          
+          //Add exit/entrance drawing
           fill(0);
           rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
 
         }
         else if(tiles[i][j]==3)
         {
+          //Add wall drawing
           fill(255,0,255);
           rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
         }
         else if(tiles[i][j]==4)
         {
+          //Add next level drawing
           fill(0,0,255);
           rect(i*boxWidth,j*boxHeight,boxWidth,boxHeight);
         }
