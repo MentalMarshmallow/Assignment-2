@@ -50,7 +50,9 @@ class AI extends Entity
   void render()
   {
     if(roomNum==currentRoom)
-    image(img,row*boxWidth,col*boxHeight);
+    {
+      image(img,row*boxWidth,col*boxHeight);
+    }
   }
   
   //Has all of the algorithms for the ai movement.
@@ -154,8 +156,12 @@ class AI extends Entity
       roomNum--;
       nextRoom();
     }
-    
-    AI.empty[row][col]=false;//At the end of update make the ai tile full
+
+    //If in the same room as the player the ai block is not empty
+    if(roomNum==currentRoom)
+    {
+      AI.empty[row][col]=false;//At the end of update make the ai tile full
+    }
     
   }//end update()
   

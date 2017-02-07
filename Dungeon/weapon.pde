@@ -2,6 +2,7 @@ class Weapon extends gameObject
 {
   int maxDamage;
   int minDamage;
+  int roomNum;
   
   Weapon(String title,int minDamage, int maxDamage)//Starting weapon
   {
@@ -10,8 +11,9 @@ class Weapon extends gameObject
     this.maxDamage=maxDamage;
   }
   
-  Weapon(String title,String location,int col,int row,int minDamage, int maxDamage)//Weapon on the ground
+  Weapon(String title,String location,int col,int row,int roomNum,int minDamage, int maxDamage)//Weapon on the ground
   {
+    this.roomNum=roomNum;
     this.row=row;
     this.col=col;
     img = loadImage(location);
@@ -22,6 +24,9 @@ class Weapon extends gameObject
   
   void render()
   {
-    image(img,row*boxWidth,col*boxHeight);
+    if(roomNum==currentRoom)
+    {
+      image(img,row*boxWidth,col*boxHeight);
+    }
   }
 }

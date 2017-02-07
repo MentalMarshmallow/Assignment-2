@@ -3,10 +3,11 @@ void drawRoom()
   if(keyPressed)
   {
     level.showRoom();
-    map.render();
     player.update();
     player.render();
     playerInfo();
+    
+    map.render();
     
     delay(100);
     
@@ -16,5 +17,7 @@ void drawRoom()
       enemy.update();
       enemy.render();
     }
+    
+    weapon1.render();
   }
 }
