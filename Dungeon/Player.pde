@@ -21,6 +21,7 @@ class Player extends Entity
   {
     Room current;//The current Room the player is in
     current = level.rooms.get(currentRoom);
+    current.empty[row][col]=true;
     
     //Checks if the arrow keys are pressed
     switch (keyCode)
@@ -59,5 +60,7 @@ class Player extends Entity
       currentRoom--;
       nextRoom();
     }
+    
+    current.empty[row][col]=false;
   }
 }

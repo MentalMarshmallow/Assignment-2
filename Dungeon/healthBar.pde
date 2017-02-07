@@ -28,10 +28,13 @@ class healthBar implements Bar
   {
     fill(255,0,0);
     text("Health: ",5,boxHeight/2);
-    fill(255,0,0);
-    stroke(100);
+    stroke(150);
     strokeWeight(5);
+    fill(100);
     rect(boxWidth*0.85,boxHeight/4,boxWidth*2,boxHeight/3);
+    fill(255,0,0);
+    noStroke();
+    rect(boxWidth*0.9,boxHeight/4+2.5,(current/total) * boxWidth*2-5,boxHeight/3-5);
     strokeWeight(1);
     
   }

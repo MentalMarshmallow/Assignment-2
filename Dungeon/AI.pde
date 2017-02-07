@@ -24,17 +24,9 @@ class AI extends Entity
     Room AI;//The current Room the AI is in
     AI= level.rooms.get(roomNum);
     
-    if(AI.tiles[row][col]==1)//If the AI is on an exit
-    {
-      println(row,col,"\n new\n");
-      roomNum++;
-    }
-    else if(AI.tiles[row][col]==2)//If the AI is on an entrance
-    {
-      roomNum--;
-    }
+    AI.empty[row][col]=true;//At beginning of update make the ai tile empty
     
-    //If the player is not in the room
+    //If the ai is not in the room
     if(roomNum!=currentRoom)
     {
       //While loop is to make sure the ai moves in a direction
@@ -42,10 +34,6 @@ class AI extends Entity
       {
         int random=(int)random(1,5);//Gets the direction the AI will move
         
-        if( row==0 && col==AI.cols/2 || row==AI.rows/2 && col==0 || row==AI.rows-1 && col==AI.cols/2 || row==AI.rows/2 && col==AI.cols-1 )
-        {
-          break;
-        }
         if(random==1 && AI.empty[row][col-1])//AI goes up
         {
           col--;
@@ -71,37 +59,25 @@ class AI extends Entity
       
       
     }//end if
-    else 
+    /*
+    If the ai is not in the currentRoom.
+    This is the ai's control while in the same room as the player.
+    It prioritizes going closer to the player based on its row.
+    */
+    
+    else
     {
       if(player.row<row && player.col==col && AI.empty[row-1][col])
       {
         row--;
       }
-      else if(player.row<row && player.col<col && AI.empty[row-1][col] && AI.empty[row][col-1])
+      else if(player.row<row && player.col<col && AI.empty[row-1][col])
       {
-        int random=(int)random(1,3);
-          
-          if(random==1)
-          {
             row--;
-          }
-          else
-          {
-            col--;
-          }
       }
-      else if(player.row<row && player.col>col && AI.empty[row-1][col] && AI.empty[row][col+1])
+      else if(player.row<row && player.col>col && AI.empty[row-1][col])
       {
-        int random=(int)random(1,3);
-          
-          if(random==1)
-          {
             row--;
-          }
-          else
-          {
-            col++;
-          }
       } 
       else if(player.row==row && player.col<col && AI.empty[row][col-1])
       {
@@ -115,34 +91,30 @@ class AI extends Entity
       {
         row++;
       }
-      else if(player.row>row && player.col<col && AI.empty[row+1][col] && AI.empty[row][col+1])
+      else if(player.row>row && player.col<col && AI.empty[row+1][col])
       {
-        int random=(int)random(1,3);
-          
-          if(random==1)
-          {
             row++;
-          }
-          else
-          {
-            col++;
-          }
       }
-      else if(player.row>row && player.col>col && AI.empty[row+1][col] && AI.empty[row][col-1])
+      else if(player.row>row && player.col>col && AI.empty[row+1][col])
       {
-        int random=(int)random(1,3);
-          
-          if(random==1)
-          {
             row++;
-          }
-          else
-          {
-            col--;
-          }
       }
       
     }
+    
+    if(AI.tiles[row][col]==1)//If the AI is on an exit
+    {
+      println(row,col,"\n new\n");
+      roomNum++;
+      nextRoom();
+    }
+    else if(AI.tiles[row][col]==2)//If the AI is on an entrance
+    {
+      roomNum--;
+      nextRoom();
+    }
+    
+    AI.empty[row][col]=false;//At the end of update make the ai tile full
     
   }//end update()
   
