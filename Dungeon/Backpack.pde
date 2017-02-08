@@ -17,6 +17,19 @@ class Backpack
   
   void render()
   {
-    background(0);
+    boolean inside=true;
+    
+    while(inside)
+    {
+      float size=width/4;
+      
+      rect(size,size,size*2,size*2);
+      
+      for(float i=size;i<2*size;i+=size*2/slots.length)
+      {
+        
+      }
+    }
   }
+  
 }

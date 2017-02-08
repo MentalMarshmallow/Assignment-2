@@ -100,7 +100,7 @@ class AI extends Entity
     //If the ai is in the room and 1 tile away from the player then attack the player. This means the ai gets the first hit if the player stumbles into the room
     else if ( player.row-1==row && player.col==col || player.row+1==row && player.col==col || player.row==row && player.col-1==col || player.row==row && player.col+1==col)
     {
-      int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
+      int damage=attack-defense+(int)random(weapon.minDamage,weapon.maxDamage);
       player.hit(damage);
     }
     

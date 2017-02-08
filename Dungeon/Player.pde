@@ -83,12 +83,14 @@ class Player extends Entity
     
     if(key==' ' && selected)
     {
-      int damage=attack+(int)random(weapon.minDamage,weapon.maxDamage);
+      int damage=attack-defense+(int)random(weapon.minDamage,weapon.maxDamage);
       
       AI enemy= enemies.get(selectedIndex);
       
       enemy.hit(damage);
       selected=false;
+      selectedIndex=-1;
+      println("hit");
     }
     else if(key==' ' && weaponSelected)
     {
