@@ -129,8 +129,12 @@ class Player extends Entity
       currentRoom--;
       nextRoom();
     }
+    else if(current.tiles[row][col]==4)//If the player is on the level exit
+    {
+      newLevel();
+    }
     
 
-    current.empty[row][col]=false;
+    current.empty[row][col]=false;//End of update we set the tile to not empty
   }
 }

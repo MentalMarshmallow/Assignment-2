@@ -6,6 +6,7 @@ float boxWidth,boxHeight;
 float border;
 int rows,cols;
 ArrayList<Level> levels;
+int totalLevels;
 int currentLevel;
 Map map;
 int totalRooms;
@@ -33,19 +34,13 @@ void setup()
   stroke(255);
   totalRooms=5;
   levels =new ArrayList<Level>();
-  levels.add(new Level(totalRooms) );
-  //level.printRooms();
-  currentLevel=0;
-  currentRoom=0;//Set the first room
+  totalLevels=5;
+  currentLevel=-1;
   
-  //Get the current room and set it true for the map
-  Room current;
-  current = levels.get(currentLevel).rooms.get(currentRoom);//Gets the current level
-  current.entered=true;
-  map=new Map();
-  map.update(' ');//Add the first room to the map
+  newLevel();
+  //level.printRooms()
   
-  initialise();
+  player = new Player("Player","Player.png",rows/2,cols/2,100,1,1,99);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
   
   nextRoom();
   player.render();
@@ -53,7 +48,6 @@ void setup()
 
 void initialise()
 {
-  player = new Player("Player","Player.png",rows/2,cols/2,100,1,1,99);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
   //ArrayList for all enemy AI in the game
   enemies= new ArrayList<AI>();
   

@@ -82,6 +82,11 @@ class Backpack
     text("Destroy",size*2.375,size*1.85);
     text("GO BACK",size*2.5+border,size*2.75+border);
     
+    fill(255,0,0);
+    if(weaponImgIndex!=-1)
+    {
+      text("Attack : " + weapons.get(slots[weaponImgIndex]).minDamage + "-"+  weapons.get(slots[weaponImgIndex]).maxDamage,size+border,size*2.75);
+    }
     
     //Used to access the backpack
     if (mousePressed)
@@ -130,11 +135,12 @@ class Backpack
           if(weaponImgIndex!=-1)
           player.equip(slots[weaponImgIndex]);
           
-          text("Equiped",size,size*2.75);
+          text("Equiped",size,size*2.9);
         }
         else if(mouseY>(2.5*size/8)+size+border && mouseY<(2.5*size/8)+size+border + 2.5*size/8 )//Unequip
         {
           player.unequip();
+          text("Un equiped",size,size*2.9);
         }
         else if(mouseY>size+border && mouseY<(5*size/8)+size+border + 2.5*size/8)
         {
@@ -145,6 +151,7 @@ class Backpack
             slots[weaponImgIndex]=-1;
             weaponImgIndex=-1;
             weaponImg=null;
+            text("Destroyed",size,size*2.9);
           }
         }
       }
