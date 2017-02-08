@@ -3,7 +3,6 @@ class Weapon extends gameObject
   int maxDamage;
   int minDamage;
   int roomNum;
-  int index;
   boolean picked;//States if the item was picked up or not
   
   Weapon(String title,int minDamage, int maxDamage)//Starting weapon
@@ -14,7 +13,7 @@ class Weapon extends gameObject
     picked=false;
   }
   
-  Weapon(int index, String title,String location,int col,int row,int roomNum,int minDamage, int maxDamage)//Weapon on the ground
+  Weapon(String title,String location,int col,int row,int roomNum,int minDamage, int maxDamage)//Weapon on the ground
   {
     this.roomNum=roomNum;
     this.row=row;

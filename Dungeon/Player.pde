@@ -24,9 +24,9 @@ class Player extends Entity
     backpack=new Backpack(5,"backpack.png");
   }
   
-  void equip(int index)
+  void equip(Weapon store)
   {
-    weapon = weapons.get(index);
+    weapon = store;
   }
   
   void unequip()
@@ -111,10 +111,11 @@ class Player extends Entity
     }
     else if(key==' ' && weaponSelected)
     {
-      weapons.get(weaponIndex).picked=true;
-      weapons.get(weaponIndex).row=-10;//So the weapon cant be picked up again
-      weapons.get(weaponIndex).col=-10;//So the weapon cant be picked up again
-      backpack.update(weaponIndex);
+      weapons.get(selectedIndex).picked=true;
+      weapons.get(selectedIndex).row=-10;//So the weapon cant be picked up again
+      weapons.get(selectedIndex).col=-10;//So the weapon cant be picked up again
+      println(weapons.get(selectedIndex).minDamage,selectedIndex);
+      backpack.update(selectedIndex);
       weaponSelected=false;
     }
 

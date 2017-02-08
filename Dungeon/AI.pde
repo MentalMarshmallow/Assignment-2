@@ -1,12 +1,9 @@
 class AI extends Entity
 {
   int roomNum;
-  int index;
   
-  AI(int index,String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
-  {
-    this.index=index;
-    
+  AI(String title,String location,int row,int col,int roomNum,int totalHealth,int attack,int defense,int dodgeChance)
+  { 
     this.attack=attack;
     this.defense=defense;
     this.dodgeChance=dodgeChance;
@@ -39,7 +36,7 @@ class AI extends Entity
         AI= levels.get(currentLevel).rooms.get(roomNum);
     
         AI.empty[row][col]=true;
-        removeAI(index);
+        removeAI(selectedIndex);
       }
     }
     else

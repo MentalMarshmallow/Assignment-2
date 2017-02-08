@@ -1,33 +1,31 @@
 class Backpack 
 {
-  int slots[];
+  ArrayList<Weapon> slots;
+  int total;
   int count;
   PImage img;
   float size;
   int border;
-  PImage weaponImg;
-  int weaponImgIndex;
+  int storedIndex;
 
   Backpack(int slot,String location)
   {
+    total=slot;
     border=5;
     size=width/4;
-    slots = new int[slot];
-    for(int i=0;i<slot;i++)
-    {
-      slots[i]=-1;
-    }
+    slots=new ArrayList<Weapon>();
     
     count=0;
     img = loadImage(location);
-    weaponImgIndex=-1;//No weapon is selected
+    storedIndex=-1;//No weapon is selected
   }
 
   void update(int index)
   {
-    if(count<slots.length)
+    if(count<total)
     {
-      slots[count]=index;
+      slots.add(weapons.get(index));
+      println(slots.get(0).minDamage,weapons.get(index).minDamage);
       
       count++;
     }
@@ -43,21 +41,21 @@ class Backpack
     fill(100);
     rect(size,size,size,size);//Magnified slot
     
-    if(weaponImg!=null)
+    if(storedIndex!=-1)
     {
-      image(weaponImg,size,size,size,size);
+      image(slots.get(storedIndex).img,size,size,size,size);
     }//Load the image on the magnified slot
     
-    for (int i=0; i<slots.length; i++)
+    for (int i=0; i<total; i++)
     {
-      rect(size+border/2 + i*(size*2/slots.length), size*2, (size*2)/slots.length-border, (size*2)/slots.length);
+      rect(size+border/2 + i*(size*2/total), size*2, (size*2)/total-border, (size*2)/total);
     }
     
-    for(int i=0;i<slots.length;i++)
+    for(int i=0;i<slots.size();i++)
     {
-      if(slots[i]!=-1)
+      if(slots.get(i)!=null)
       {
-        image(weapons.get(slots[i]).img,size+border/2 + i*(size*2/slots.length), size*2, (size*2)/slots.length-border, (size*2)/slots.length);
+        image(slots.get(i).img,size+border/2 + i*(size*2/total), size*2, (size*2)/total-border, (size*2)/total);
       }
     }
     
@@ -83,9 +81,9 @@ class Backpack
     text("GO BACK",size*2.5+border,size*2.75+border);
     
     fill(255,0,0);
-    if(weaponImgIndex!=-1)
+    if(storedIndex!=-1)
     {
-      text("Attack : " + weapons.get(slots[weaponImgIndex]).minDamage + "-"+  weapons.get(slots[weaponImgIndex]).maxDamage,size+border,size*2.75);
+      text("Attack : " + slots.get(storedIndex).minDamage + "-"+  slots.get(storedIndex).maxDamage,size+border,size*2.75);
     }
     
     //Used to access the backpack
@@ -111,29 +109,28 @@ class Backpack
         }//End for
         
       }
-      else if(mouseY<size*2+(size*2)/slots.length && mouseY>size*2)//If its on the backpack slots
+      else if(mouseY<size*2+(size*2)/slots.size() && mouseY>size*2)//If its on the backpack slots
       {
-        for (int i=0; i<slots.length; i++)//Goes through backpack slots
+        for (int i=0; i<slots.size(); i++)//Goes through backpack slots
         {
-          if(mouseX>size+border/2 + i*(size*2/slots.length) && mouseX<size+border/2 + i*(size*2/slots.length) +(size*2)/slots.length-border)//Checks which backpack slot it is on
+          if(mouseX>size+border/2 + i*(size*2/slots.size()) && mouseX<size+border/2 + i*(size*2/slots.size()) +(size*2)/slots.size()-border)//Checks which backpack slot it is on
           {
-            if(slots[i]!=-1)//If a weapon is in the slot
+            if(slots.get(i)!=null)//If a weapon is in the slot
             {
               //Display the slot on the magnified slot
-              weaponImg= weapons.get(slots[i]).img;
-              weaponImgIndex=i;
+              storedIndex=i;
             }
            
           }
         }//end for
         
       }//End slot check
-      else if(mouseX>size*2+border && mouseX<size*3-border)//If its the equip/unequip/destroy button
+      else if(mouseX>size*2+border && mouseX<size*3-border)//If its the equip/unequip/reforge button
       {
         if(mouseY>size+border && mouseY<size+border + 2.5*size/8)//Equip
         {
-          if(weaponImgIndex!=-1)
-          player.equip(slots[weaponImgIndex]);
+          if(storedIndex!=-1)
+          player.equip(slots.get(storedIndex));
           
           text("Equiped",size,size*2.9);
         }
@@ -144,14 +141,13 @@ class Backpack
         }
         else if(mouseY>size+border && mouseY<(5*size/8)+size+border + 2.5*size/8)
         {
-          if( weaponImgIndex!=-1)//If there is a weapon in the slot
+          if( storedIndex!=-1)//If there is a weapon in the slot
           {
             player.unequip();
-            removeWeapon(slots[weaponImgIndex]);
-            slots[weaponImgIndex]=-1;
-            weaponImgIndex=-1;
-            weaponImg=null;
-            text("Destroyed",size,size*2.9);
+            removeWeapon(storedIndex);
+            slots.remove(storedIndex);
+            storedIndex=-1;
+            text("Reforge",size,size*2.9);
           }
         }
       }
