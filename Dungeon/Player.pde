@@ -21,7 +21,7 @@ class Player extends Entity
     this.title=title;
 
     weapon= new Weapon("Fist", 3, 10);
-    backpack=new Backpack(5);
+    backpack=new Backpack(5,"backpack.png");
   }
 
 
@@ -48,6 +48,10 @@ class Player extends Entity
   void render()
   {
     image(img, row*boxWidth, col*boxHeight);
+    if(inside)
+    {
+      backpack.render();
+    }
   }
 
   void update()

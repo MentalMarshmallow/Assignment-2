@@ -5,4 +5,7 @@ void playerInfo()
   rect(0,0,boxWidth*3,boxHeight);
   player.health.render();
   stroke(255);
+  
+  rect(width-boxWidth,height-boxHeight,boxWidth,boxHeight);//Backpack outline
+  player.backpack
 }

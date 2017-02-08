@@ -2,11 +2,13 @@ class Backpack
 {
   int slots[];
   int count;
+  PImage img;
 
-  Backpack(int slot)
+  Backpack(int slot,String location)
   {
     slots = new int[slot];
     count=0;
+    img = loadImage(location);
   }
 
   void update(int index)
@@ -15,14 +17,14 @@ class Backpack
     count++;
   }
   
-  void mouseCheck()
+  //This is to display the backpacks image
+  void display()
   {
     
   }
 
   void render()
   {
-
     fill(0);
     float size=width/4;
     int border=5;

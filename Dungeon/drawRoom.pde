@@ -33,7 +33,7 @@ void drawRoom()
   
   if(inside)
   {
-    backpack.render();
+    player.backpack.render();
   }
   
 }
