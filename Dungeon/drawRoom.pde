@@ -7,7 +7,7 @@ void drawRoom()
   {
     if(keyCode==UP||keyCode==DOWN||keyCode==LEFT||keyCode==RIGHT||key==' ' && selected||key==' ' && weaponSelected)
     {
-      level.showRoom();
+      levels.get(currentLevel).showRoom();
       player.update();
       player.render();
       playerInfo();

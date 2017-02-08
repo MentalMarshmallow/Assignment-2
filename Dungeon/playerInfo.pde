@@ -14,6 +14,4 @@ void backpackShow()
   
   //This is to display the backpacks image
   image(player.backpack.img, width-boxWidth, height - boxHeight,boxWidth,boxHeight);
-  
-  println(mouseX,mouseY);
 }

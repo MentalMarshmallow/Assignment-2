@@ -29,11 +29,14 @@ class AI extends Entity
     
     if(hit)
     {
+      fill(255,0,0);
       currentHealth-=damage;
+      text("*"+damage+"*",(row-1)*boxWidth,(col)*boxHeight);
+      
       if(currentHealth<0)
       {
         Room AI;//The current Room the AI is in
-        AI= level.rooms.get(roomNum);
+        AI= levels.get(currentLevel).rooms.get(roomNum);
     
         AI.empty[row][col]=true;
         removeAI(index);
@@ -43,6 +46,7 @@ class AI extends Entity
     {
       text("*DODGED*",(row-1)*boxWidth,col*boxHeight);
     }
+    
     
   }
   
@@ -59,7 +63,7 @@ class AI extends Entity
   void update()
   {
     Room AI;//The current Room the AI is in
-    AI= level.rooms.get(roomNum);
+    AI= levels.get(currentLevel).rooms.get(roomNum);
     
     AI.empty[row][col]=true;//At beginning of update make the ai tile empty
     

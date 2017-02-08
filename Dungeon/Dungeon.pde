@@ -5,7 +5,8 @@ Table table;//Table to get information
 float boxWidth,boxHeight;
 float border;
 int rows,cols;
-Level level;
+ArrayList<Level> levels;
+int currentLevel;
 Map map;
 int totalRooms;
 int currentRoom;
@@ -31,13 +32,15 @@ void setup()
   
   stroke(255);
   totalRooms=5;
-  level =new Level(totalRooms);
+  levels =new ArrayList<Level>();
+  levels.add(new Level(totalRooms) );
   //level.printRooms();
+  currentLevel=0;
   currentRoom=0;//Set the first room
   
   //Get the current room and set it true for the map
   Room current;
-  current = level.rooms.get(currentRoom);
+  current = levels.get(currentLevel).rooms.get(currentRoom);//Gets the current level
   current.entered=true;
   map=new Map();
   map.update(' ');//Add the first room to the map

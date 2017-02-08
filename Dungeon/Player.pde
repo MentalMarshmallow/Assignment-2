@@ -23,8 +23,19 @@ class Player extends Entity
     weapon= new Weapon("Fist", 3, 10);
     backpack=new Backpack(5,"backpack.png");
   }
-
-
+  
+  void equip(int index)
+  {
+    weapon = weapons.get(index);
+  }
+  
+  void unequip()
+  {
+    weapon = new Weapon("Fist", 3, 10);
+  }
+  
+  
+  //The player got hit
   void hit(int damage)
   {
     boolean hit =(int)random(1, 100)>=dodgeChance;//Checks the probability of hitting based on dodgeChance
@@ -32,6 +43,7 @@ class Player extends Entity
     if (hit)
     {
       health.current-=damage;
+      text("*"+damage+"*",(row-1)*boxWidth,(col)*boxHeight);
       if (health.current<0)
       {
         gameState=3;
@@ -57,7 +69,7 @@ class Player extends Entity
   void update()
   {
     Room current;//The current Room the player is in
-    current = level.rooms.get(currentRoom);
+    current = levels.get(currentLevel).rooms.get(currentRoom);
     current.empty[row][col]=true;
 
     //Checks if the arrow keys are pressed
@@ -96,11 +108,13 @@ class Player extends Entity
       enemy.hit(damage);
       selected=false;
       selectedIndex=-1;
-      println("hit");
     }
     else if(key==' ' && weaponSelected)
     {
-      
+      weapons.get(weaponIndex).picked=true;
+      weapons.get(weaponIndex).row=-10;//So the weapon cant be picked up again
+      weapons.get(weaponIndex).col=-10;//So the weapon cant be picked up again
+      backpack.update(weaponIndex);
       weaponSelected=false;
     }
 

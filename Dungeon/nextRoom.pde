@@ -1,9 +1,9 @@
 void nextRoom()
 {
-  level.showRoom();//Shows the next Room
+  levels.get(currentLevel).showRoom();//Shows the next Room
   
   Room current;//The current Room the player is in
-  current = level.rooms.get(currentRoom);
+  current = levels.get(currentLevel).rooms.get(currentRoom);
   int currentRows=current.tiles.length;
   int currentCols=current.tiles[0].length;//Gets the total column
   
@@ -58,7 +58,7 @@ void nextRoom()
   {
     
     Room AIRoom;//The current Room the AI is in
-    AIRoom= level.rooms.get(enemy.roomNum);
+    AIRoom= levels.get(currentLevel).rooms.get(enemy.roomNum);
     
     if(enemy.row==AIRoom.rows/2 && enemy.col==0)//If enemy uses upper exit
     {

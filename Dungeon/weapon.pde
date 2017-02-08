@@ -4,12 +4,14 @@ class Weapon extends gameObject
   int minDamage;
   int roomNum;
   int index;
+  boolean picked;//States if the item was picked up or not
   
   Weapon(String title,int minDamage, int maxDamage)//Starting weapon
   {
     this.title=title;
     this.minDamage=minDamage;
     this.maxDamage=maxDamage;
+    picked=false;
   }
   
   Weapon(int index, String title,String location,int col,int row,int roomNum,int minDamage, int maxDamage)//Weapon on the ground
@@ -21,11 +23,12 @@ class Weapon extends gameObject
     this.title=title;
     this.minDamage=minDamage;
     this.maxDamage=maxDamage;
+    picked=false;
   }
   
   void render()
   {
-    if(roomNum==currentRoom)
+    if(roomNum==currentRoom && !picked)
     {
       image(img,row*boxWidth,col*boxHeight,boxWidth,boxHeight);
     }
