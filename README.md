@@ -1,7 +1,7 @@
 # Assignment-2
 Assignment 2 for OOP
 
-[![Image Not Working](https://img.youtube.com/vi/_FNaDPkr68Q)](https://www.youtube.com/watch?v=_FNaDPkr68Q)
+[![Image Not Working](https://img.youtube.com/vi/_FNaDPkr68Q/0.jpg)](https://www.youtube.com/watch?v=_FNaDPkr68Q)
 
 ##Concept
 I created a dungeon as a dungeon is highly expansive and immersive.
