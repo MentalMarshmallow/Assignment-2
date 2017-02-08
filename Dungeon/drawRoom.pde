@@ -11,6 +11,7 @@ void drawRoom()
       player.update();
       player.render();
       playerInfo();
+      backpackShow();
       
       map.render();
       

@@ -3,9 +3,13 @@ class Backpack
   int slots[];
   int count;
   PImage img;
+  float size;
+  int border;
 
   Backpack(int slot,String location)
   {
+    border=5;
+    size=width/4;
     slots = new int[slot];
     count=0;
     img = loadImage(location);
@@ -16,18 +20,10 @@ class Backpack
     slots[count]=index;
     count++;
   }
-  
-  //This is to display the backpacks image
-  void display()
-  {
-    
-  }
 
   void render()
   {
     fill(0);
-    float size=width/4;
-    int border=5;
 
     rect(size, size, size*2, size*2);//Black background for the backpack
     
@@ -64,21 +60,6 @@ class Backpack
     //Used to access the backpack
     if (mousePressed)
     {
-      if(mouseX>size*2.5 && mouseX<size*3 && mouseY>size*2.5 && mouseY<size*3)//If the mouse is in the exit button
-      {
-        inside=false;
-      }
-      else if(mouseY<size*2+(size*2)/slots.length && mouseY<size*2)//If its on the backpack slots
-      {
-        for (int i=0; i<slots.length; i++)//Goes through backpack slots
-        {
-          if(mouseX>size+border/2 + i*(size*2/slots.length) && mouseX<size+border/2 + i*(size*2/slots.length) +(size*2)/slots.length-border)//Checks which backpack slot it is on
-          {
-            //Display the slot on the magnified slot
-          }
-        }//end for
-        
-      }
       
     }//end if mousePressed
     

@@ -47,7 +47,7 @@ class Player extends Entity
 
   void render()
   {
-    image(img, row*boxWidth, col*boxHeight);
+    image(img, row*boxWidth, col*boxHeight,boxWidth,boxHeight);
     if(inside)
     {
       backpack.render();
@@ -100,6 +100,7 @@ class Player extends Entity
     }
     else if(key==' ' && weaponSelected)
     {
+      
       weaponSelected=false;
     }
 

@@ -51,7 +51,7 @@ class AI extends Entity
   {
     if(roomNum==currentRoom)
     {
-      image(img,row*boxWidth,col*boxHeight);
+      image(img,row*boxWidth,col*boxHeight,boxWidth,boxHeight);
     }
   }
   
