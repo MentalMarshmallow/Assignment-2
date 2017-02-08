@@ -50,7 +50,7 @@ void setup()
   newLevel();
   //level.printRooms()
 
-  player = new Player("Player", "Player.png", rows/2, cols/2, 100, 1, 1, 99);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
+  player = new Player("Player", "Player.png", rows/2, cols/2, 100, 1, 1, 30);//Player(String title,String location,int col,int row,int totalHealth,int attack,int defense,int dodgeChance)
 
   nextRoom();
   player.render();
