@@ -31,4 +31,9 @@ void drawRoom()
     
   }//End if
   
+  if(inside)
+  {
+    backpack.render();
+  }
+  
 }

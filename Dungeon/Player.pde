@@ -4,6 +4,7 @@ The player moves using the rows and cols and is an entity.
 class Player extends Entity
 {  
   healthBar health;
+  Backpack backpack;
 
   Player(String title, String location, int col, int row, int totalHealth, int attack, int defense, int dodgeChance)
   {
@@ -20,6 +21,7 @@ class Player extends Entity
     this.title=title;
 
     weapon= new Weapon("Fist", 3, 10);
+    backpack=new Backpack(5);
   }
 
 

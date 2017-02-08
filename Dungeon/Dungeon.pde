@@ -14,6 +14,7 @@ boolean selected;//If an enemy is selected to be attacked
 boolean weaponSelected;//If a weapon is selected to be picked up
 int selectedIndex;//Index of selected enemy
 int weaponIndex;//Index of selected weapon
+boolean inside;
 
 void setup()
 {
@@ -26,6 +27,7 @@ void setup()
   gameState=2;
   selected=false;
   weaponSelected=false;
+  inside=false;
   
   stroke(255);
   totalRooms=5;
